@@ -1,0 +1,62 @@
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="templates/style.css">
+  <title>Search words</title>
+</head>
+<body>
+<table width="100%">
+  <tr><td class="top"><?=$setting['title']?></td></tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="menu">
+      <a href="report.php">Total</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=browser">Browsers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=os">OS</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=request">Requests</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=refer">Referers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=bot">Bots</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=ip">IPs</a>&nbsp;&nbsp;&nbsp;
+      Search words&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=click">Clicks</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=daily">Daily</a>&nbsp;&nbsp;&nbsp;
+      <a href="setting.php">Settings</a>&nbsp;&nbsp;&nbsp;
+      <a href="logout.php">Logout</a>
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr><td class="caption"><h1>Search words</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      
+      <? if (isset($content['search'])): ?>    
+      <table class="info">
+      
+        <? foreach ($content['search'] as $search): ?>
+          <tr>
+            <td align="right">
+              <img src="images/<?=strtolower($search[0])?>.png" width="16" height="16" alt="<?=$search[0]?>">
+            </td>
+            <td>
+              <? if ($search[1] == ''): ?>
+                ? &rarr; <a href="<?=$search[3]?>"><?=urldecode($search[3])?></a>
+              <? else: ?>
+                <a href="<?=$search[2]?>"><?=$search[1]?></a> &rarr; <a href="<?=$search[3]?>"><?=urldecode($search[3])?></a>
+              <? endif; ?>
+            </td>
+          </tr>
+        <? endforeach; ?>
+                        
+      </table>
+      <? endif; ?>
+      
+    </td>
+  </tr>
+</table> 
+<table width="100%">
+  <tr><td class="footer"></td></tr>
+</table>
+</body>
+</html>

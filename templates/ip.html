@@ -1,0 +1,66 @@
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="templates/style.css">
+  <title>IPs</title>
+</head>
+<body>
+<table width="100%">
+  <tr><td class="top"><?=$setting['title']?></td></tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="menu">
+      <a href="report.php">Total</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=browser">Browsers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=os">OS</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=request">Requests</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=refer">Referers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=bot">Bots</a>&nbsp;&nbsp;&nbsp;
+      IPs&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=search">Search words</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=click">Clicks</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=daily">Daily</a>&nbsp;&nbsp;&nbsp;
+      <a href="setting.php">Settings</a>&nbsp;&nbsp;&nbsp;
+      <a href="logout.php">Logout</a>
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr><td class="caption"><h1>IPs</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+    
+      <? if (isset($content['ip'])): ?>    
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        <? foreach (array_keys($content['ip']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['ip'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['ip'][$key]?></td></tr>
+        <? endforeach; ?>        
+      </table>
+      <? endif; ?>
+      
+    </td>
+  </tr>  
+  
+  <tr><td class="caption"><h1>Geography</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+
+      <? if (isset($content['cities'])): ?>    
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        <? foreach (array_keys($content['cities']) as $key): ?>
+          <tr><td align="right"><?=$key?></a></td><td><img src="images/row.gif" height="10px" width="<?=($content['cities'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['cities'][$key]?></td></tr>
+        <? endforeach; ?>        
+      </table>
+      <? endif; ?>
+
+    </td>
+  </tr>
+</table> 
+<table width="100%">
+  <tr><td class="footer"></td></tr>
+</table>
+</body>
+</html>

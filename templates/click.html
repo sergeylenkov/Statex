@@ -1,0 +1,76 @@
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="templates/style.css">
+  <title>Clicks</title>
+</head>
+<body>
+<table width="100%">
+  <tr><td class="top"><?=$setting['title']?></td></tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="menu">
+      <a href="report.php">Total</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=browser">Browsers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=os">OS</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=request">Requests</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=refer">Referers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=bot">Bots</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=ip">IPs</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=search">Search words</a>&nbsp;&nbsp;&nbsp;
+      Clicks&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=daily">Daily</a>&nbsp;&nbsp;&nbsp;
+      <a href="setting.php">Settings</a>&nbsp;&nbsp;&nbsp;
+      <a href="logout.php">Logout</a>
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr><td class="caption"><h1>Clicks</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <? if (isset($content['clicks'])): ?>    
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>#</b></td></tr>
+        
+        <? foreach(array_keys($content['clicks']) as $key): ?>
+          <tr><td align="right"><a href="report.php?action=click&url=<?=$key?>"><?=$key?></a></td><td><img src="images/row.gif" height="10px" width="<?=($content['clicks_percent'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['clicks'][$key]?></td></tr>
+        <? endforeach; ?> 
+               
+      </table>
+      <p>&nbsp;<p>
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['clicks']) as $key): ?>
+          <tr><td align="right"><a href="<?=$key?>"><?=$key?></a></td><td><img src="images/row.gif" height="10px" width="<?=($content['clicks_percent'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['clicks_percent'][$key]?></td></tr>
+        <? endforeach; ?>
+                
+      </table>
+      <? endif; ?>
+    </td>
+  </tr>
+  
+  <tr><td class="caption"><h1><?=$_GET['url']?></h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <? if (isset($content['detail'])): ?>    
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>#</b></td></tr>
+        
+        <? foreach(array_keys($content['detail']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['detail_percent'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['detail'][$key]?></td></tr>
+        <? endforeach; ?> 
+               
+      </table>      
+      <? endif; ?>
+    </td>
+  </tr>
+  
+</table>
+<table width="100%">
+  <tr><td class="footer"></td></tr>
+</table> 
+</body>
+</html>

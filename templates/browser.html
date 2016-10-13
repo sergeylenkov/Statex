@@ -1,0 +1,130 @@
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="templates/style.css">
+  <title>Browsers</title>
+</head>
+<body>
+<table width="100%">
+  <tr><td class="top"><?=$setting['title']?></td></tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="menu">
+      <a href="report.php">Total</a>&nbsp;&nbsp;&nbsp;      
+      Browsers&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=os">OS</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=request">Requests</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=refer">Referers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=bot">Bots</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=ip">IPs</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=search">Search words</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=click">Clicks</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=daily">Daily</a>&nbsp;&nbsp;&nbsp;
+      <a href="setting.php">Settings</a>&nbsp;&nbsp;&nbsp;
+      <a href="logout.php">Logout</a>
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr><td class="caption"><h1>Browsers</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        <? if ($content['ie']['percent'] != '0'): ?><tr><td align="right"><a href="report.php?action=browser&name=ie">Internet Explorer</a></td><td><img src="images/row.gif" height="10px" width="<?=($content['ie']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['ie']['percent']?></td></tr><? endif; ?>
+        <? if ($content['firefox']['percent'] != '0'): ?><tr><td align="right"><a href="report.php?action=browser&name=firefox">Firefox</a></td><td><img src="images/row.gif" height="10px" width="<?=($content['firefox']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['firefox']['percent']?></td></tr><? endif; ?>
+		<? if ($content['safari']['percent'] != '0'): ?><tr><td align="right"><a href="report.php?action=browser&name=safari">Safari</a></td><td><img src="images/row.gif" height="10px" width="<?=($content['safari']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['safari']['percent']?></td></tr><? endif; ?>
+		<? if ($content['chrome']['percent'] != '0'): ?><tr><td align="right"><a href="report.php?action=browser&name=chrome">Chrome</a></td><td><img src="images/row.gif" height="10px" width="<?=($content['chrome']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['chrome']['percent']?></td></tr><? endif; ?>
+        <? if ($content['opera']['percent'] != '0'): ?><tr><td align="right"><a href="report.php?action=browser&name=opera">Opera</td><td><img src="images/row.gif" height="10px" width="<?=($content['opera']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['opera']['percent']?></td></tr><? endif; ?>
+        <? if ($content['other']['percent'] != '0'): ?><tr><td align="right">Other</td><td><img src="images/row.gif" height="10px" width="<?=($content['other']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['other']['percent']?></td></tr><? endif; ?>
+      </table>
+    </td>
+  </tr>
+  
+  <? if (isset($content['ie_v'])): ?>
+  <tr><td class="caption"><h1>Internet Explorer</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['ie_v']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['ie_v'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['ie_v'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?>
+  
+  <? if (isset($content['firefox_v'])): ?>
+  <tr><td class="caption"><h1>Firefox</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['firefox_v']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['firefox_v'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['firefox_v'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?> 
+  
+  <? if (isset($content['safari_v'])): ?>
+  <tr><td class="caption"><h1>Safari</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['safari_v']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['safari_v'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['safari_v'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?> 
+  
+  <? if (isset($content['chrome_v'])): ?>
+  <tr><td class="caption"><h1>Chrome</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['chrome_v']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['chrome_v'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['chrome_v'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?>
+  
+  <? if (isset($content['opera_v'])): ?>
+  <tr><td class="caption"><h1>Opera</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['opera_v']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['opera_v'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['opera_v'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?> 
+  
+</table> 
+<table width="100%">
+  <tr><td class="footer"></td></tr>
+</table>
+</body>
+</html>

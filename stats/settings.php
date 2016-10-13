@@ -1,0 +1,1 @@
+a:12:{s:4:"name";s:0:"";s:4:"host";s:21:"quicktranslateapp.com";s:4:"days";s:2:"30";s:6:"search";s:2:"50";s:4:"mail";s:17:"lenkovs@gmail.com";s:5:"login";N;s:8:"password";s:7:"jane512";s:12:"no_variables";b:0;s:11:"use_counter";b:0;s:7:"use_rss";b:0;s:15:"cookie_lifetime";s:2:"30";s:5:"title";s:10:"Statex 1.5";}

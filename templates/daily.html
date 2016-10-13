@@ -1,0 +1,78 @@
+<html>
+<head>  
+  <meta name="author" content="Сергей Леньков">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="templates/style.css">
+  <title>Statistics for last <?=$settings['days']?> days</title>
+</head>
+<body>
+<table width="100%">
+  <tr><td class="top"><?=$setting['title']?></td></tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="menu">
+      <a href="report.php">Total</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=browser">Browsers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=os">OS</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=request">Requests</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=refer">Referers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=bot">Bots</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=ip">IPs</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=search">Search words</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=click">Clicks</a>&nbsp;&nbsp;&nbsp;
+      Daily&nbsp;&nbsp;&nbsp;
+      <a href="setting.php">Settings</a>&nbsp;&nbsp;&nbsp;
+      <a href="logout.php">Logout</a>
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="caption" width="50%">
+      <h1>Visitors for last <?=$setting['days']?> days</h1>
+    </td>
+    <td class="caption" width="50%">
+      <? if (isset($content['detail'])): ?>
+      <h1>Details on <?=$content['date']['detail']?></h1>
+      <? endif; ?>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" width="50%" class="body">  
+      <? if (isset($content['daily'])): ?>  
+      <table class="info" width="100%">
+        <tr><td width="50%"></td><td width="50%"><b>#</b></td></tr>
+                
+        <? foreach ($content['daily'] as $day): ?>
+          <? if ($day[1] == $_GET['date']): ?>
+          <tr><td align="right"><?=$day[0]?></td><td><img src="images/row.gif" height="10px" width="<?=($day[8] * 2 + 1)?>px">&nbsp;&nbsp;<?=$day[2]?></td></tr>
+          <? else: ?>
+          <tr><td align="right"><a href="report.php?action=daily&date=<?=$day[1]?>"><?=$day[0]?></a></td><td><img src="images/row.gif" height="10px" width="<?=($day[8] * 2 + 1)?>px">&nbsp;&nbsp;<?=$day[2]?></td></tr>
+          <? endif; ?>
+        <? endforeach; ?>
+        
+      </table>
+      <? endif; ?>
+    </td>
+    <td valign="top" width="50%" class="body">
+    
+      <? if (isset($content['detail'])): ?>      
+      <table class="info" width="100%">
+        <tr><td width="50%"></td><td width="50%"><b>#</b></td></tr>
+        <? if ($content['detail']['unique'] != '0'): ?><tr><td align="right">Visitors</td><td><img src="images/row.gif" height="10px" width="<?=(100 * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['detail']['unique']?></td></tr><? endif; ?>
+        <? if ($content['detail']['audience'] != '0'): ?><tr><td align="right">Audience</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['audience'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['detail']['audience']?></td></tr><? endif; ?>
+        <? if ($content['detail']['other'] != '0'): ?><tr><td align="right">Referers</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['other'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['detail']['other']?></td></tr><? endif; ?>
+        <? if ($content['detail']['search'] != '0'): ?><tr><td align="right">Search</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['search'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['detail']['search']?></td></tr><? endif; ?>
+        <? if ($content['detail']['robots'] != '0'): ?><tr><td align="right">Bots</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['robots'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['detail']['robots']?></td></tr><? endif; ?>
+      </table>
+      <? endif; ?>
+      
+    </td>    
+  </tr>
+</table> 
+<table width="100%">
+  <tr><td class="footer"></td></tr>
+</table>
+</body>
+</html>

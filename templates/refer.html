@@ -1,0 +1,66 @@
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="templates/style.css">
+  <title>Referers</title>
+</head>
+<body>
+<table width="100%">
+  <tr><td class="top"><?=$setting['title']?></td></tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="menu">
+      <a href="report.php">Total</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=browser">Browsers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=os">OS</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=request">Requests</a>&nbsp;&nbsp;&nbsp;
+      Referers&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=bot">Bots</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=ip">IPs</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=search">Search words</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=click">Clicks</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=daily">Daily</a>&nbsp;&nbsp;&nbsp;
+      <a href="setting.php">Settings</a>&nbsp;&nbsp;&nbsp;
+      <a href="logout.php">Logout</a>
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr><td class="caption"><h1>Referers</h1></td></tr>
+  <tr>
+  	<td valign="top" width="50%" class="body">  
+      
+      <? if (isset($content['refer'])): ?>    
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        <? foreach (array_keys($content['refer']) as $key): ?>
+          <tr><td align="right" valign="baseline"><img src="http://<?=$key?>/favicon.ico" width="16" height="16" alt="<?=$key?>">&nbsp;<a href="report.php?action=refer&host=<?=$key?>"><?=$key?></a></td><td><img src="images/row.gif" height="10px" width="<?=($content['refer'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['refer'][$key]?></td></tr>
+        <? endforeach; ?>        
+      </table>
+      <? endif; ?>
+      
+    </td>    
+  </tr>
+  
+  <? if (isset($content['detail'])): ?>
+  <tr><td class="caption"><h1><?=$_GET['host']?></h1></td></tr>
+  <tr>
+  	<td valign="top" width="50%" class="body">
+    
+          
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        <? foreach (array_keys($content['detail']) as $key): ?>
+          <tr><td align="right"><a href="<?=$key?>"><?=$key?></a></td><td><img src="images/row.gif" height="10px" width="<?=($content['detail'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['detail'][$key]?></td></tr>
+        <? endforeach; ?>        
+      </table>      
+    </td>
+  </tr>
+  <? endif; ?>
+</table>
+<table width="100%">
+  <tr><td class="footer"></td></tr>
+</table>
+</body>
+</html>

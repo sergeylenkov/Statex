@@ -1,0 +1,130 @@
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="templates/style.css">
+  <title>OS</title>
+</head>
+<body>
+<table width="100%">
+  <tr><td class="top"><?=$setting['title']?></td></tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="menu">
+      <a href="report.php">Total</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=browser">Browsers</a>&nbsp;&nbsp;&nbsp;
+      OS&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=request">Requests</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=refer">Referers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=bot">Bots</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=ip">IPs</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=search">Search words</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=click">Clicks</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=daily">Daily</a>&nbsp;&nbsp;&nbsp;
+      <a href="setting.php">Settings</a>&nbsp;&nbsp;&nbsp;
+      <a href="logout.php">Logout</a>
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr><td class="caption"><h1>OS</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        <? if ($content['windows']['percent'] != '0'): ?><tr><td align="right"><a href="report.php?action=os&name=win">Windows</a></td><td><img src="images/row.gif" height="10px" width="<?=($content['windows']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['windows']['percent']?></td></tr><? endif; ?>
+        <? if ($content['mac']['percent'] != '0'): ?><tr><td align="right"><a href="report.php?action=os&name=mac">Mac</a></td><td><img src="images/row.gif" height="10px" width="<?=($content['mac']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['mac']['percent']?></td></tr><? endif; ?>
+        <? if ($content['iphone']['percent'] != '0'): ?><tr><td align="right"><a href="report.php?action=os&name=iphone">iPhone</a></td><td><img src="images/row.gif" height="10px" width="<?=($content['iphone']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['iphone']['percent']?></td></tr><? endif; ?>
+        <? if ($content['linux']['percent'] != '0'): ?><tr><td align="right"><a href="report.php?action=os&name=linux">Linux</a></td><td><img src="images/row.gif" height="10px" width="<?=($content['linux']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['linux']['percent']?></td></tr><? endif; ?>
+        <? if ($content['other']['percent'] != '0'): ?><tr><td align="right">Other</td><td><img src="images/row.gif" height="10px" width="<?=($content['other']['percent'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['other']['percent']?></td></tr><? endif; ?>
+      </table>
+    </td>
+  </tr>
+  
+  <? if (isset($content['windows_v'])): ?>
+  <tr><td class="caption"><h1>Windows</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['windows_v']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['windows_v'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['windows_v'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?>
+  
+  <? if (isset($content['mac_v'])): ?>
+  <tr><td class="caption"><h1>Mac</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['mac_v']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['mac_v'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['mac_v'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?> 
+  
+  <? if (isset($content['mac_proc'])): ?>
+	<tr><td valign="top" class="body">&nbsp;</td></tr>
+	
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['mac_proc']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['mac_proc'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['mac_proc'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?> 
+  
+  <? if (isset($content['iphone_v'])): ?>
+  <tr><td class="caption"><h1>iPhone</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['iphone_v']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['iphone_v'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['iphone_v'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?>
+  
+  <? if (isset($content['linux_v'])): ?>
+  <tr><td class="caption"><h1>Linux</h1></td></tr>
+  <tr>  
+    <td valign="top" class="body">
+      <table class="info" width="50%">
+        <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>
+        
+        <? foreach (array_keys($content['linux_v']) as $key): ?>
+          <tr><td align="right"><?=$key?></td><td><img src="images/row.gif" height="10px" width="<?=($content['linux_v'][$key] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['linux_v'][$key]?></td></tr>
+        <? endforeach; ?>
+
+      </table>
+    </td>
+  </tr> 
+  <? endif; ?>
+  
+</table> 
+<table width="100%">
+  <tr><td class="footer"></td></tr>
+</table>
+</body>
+</html>

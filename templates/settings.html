@@ -1,0 +1,59 @@
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="templates/style.css">
+  <title>Settings</title>
+  <script type="text/javascript" src="setfocus.js"></script>
+  <script type="text/javascript" src="ctrlenter.js"></script>
+</head>
+<body onLoad=setFocus()>
+<table width="100%">
+  <tr><td class="top"><?=$setting['title']?></td></tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="menu">
+      <a href="report.php" class="menu">Total</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=browser">Browsers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=os">OS</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=request">Requests</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=refer">Referers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=bot">Bots</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=ip">IPs</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=search">Search words</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=click">Clicks</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=daily">Daily</a>&nbsp;&nbsp;&nbsp;
+      Settings&nbsp;&nbsp;&nbsp;
+      <a href="logout.php">Logout</a>
+    </td>
+  </tr>
+</table>
+<table width="100%">
+  <tr><td class="caption"><h1>Settings</h1></td></tr>
+  <tr>
+    <td valign="top" class="body" width="50%">
+      <form action="settings.php" method="post" enctype="multipart/form-data" name="submit_on_ctrlenter">
+        <table class="info" width="100%">
+          <tr><td>Name:<br><input id="first" class="text" type="text" name="name" value="<?=$setting['name']?>"></td></tr>
+          <tr><td>URL:<br><input class="text" type="text" name="host" value="<?=$setting['host']?>"><br><small>Используется для определения внутренних переходов</small></td></tr>
+          <tr><td>Days count in daily report:<br><input class="text" type="text" name="days" value="<?=$setting['days']?>"></td></tr>
+          <tr><td>Count of last search words:<br><input class="text" type="text" name="search" value="<?=$setting['search']?>"></td></tr>
+          <tr><td>Password:<br><input class="text" type="text" name="password" value="<?=$setting['password']?>"></td></tr>
+          <tr><td>Email:<br><input class="text" type="text" name="mail" value="<?=$setting['mail']?>"></td></tr>
+          <tr><td>Cookies lifetime:<br><input class="text" type="text" name="cookie_lifetime" value="<?=$setting['cookie_lifetime']?>"></td></tr>
+          <tr><td><label for="no_variables"><input type="checkbox" name="no_variables" id="no_variables" <?=$form['no_variables']?>> Не учитывать переменные в ссылках при выводе статистики<br><small>Удаляются все переменные после первого знака <b>&</b></small></label></td></tr>          
+          <tr><td><label for="use_counter"><input type="checkbox" name="use_counter" id="use_counter" <?=$form['use_counter']?>> Использовать графический счетчик</label><br><small>Счетчик сохраняется в файл <b>/images/counter.png</b></small></td></tr>
+          <tr><td><label for="use_rss"><input type="checkbox" name="use_rss" id="use_rss" <?=$form['use_rss']?>>Use RSS</label><br><small>RSS можно брать по адресу <b>/rss/rss.xml</b></small></td></tr>
+          <tr><td align="center"><input type="submit" style="height: 40px;" value="Save (Ctrl+Enter)"></td></tr>
+          <input type="hidden" name="mode" value="save">  
+        </table>
+      </form>
+    </td>
+    <td width="50%"></td>
+  </tr>
+</table> 
+<table width="100%">
+  <tr><td class="footer"></td></tr>
+</table>
+</body>
+</html>

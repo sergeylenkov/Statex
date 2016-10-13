@@ -1,0 +1,81 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="templates/style.css">
+  <title>Statistics on <?=$content['date']['text']?></title>
+</head>
+<body>
+<table width="100%">
+  <tr><td class="top"><?=$setting['title']?></td></tr>
+</table>
+<table width="100%">
+  <tr>
+    <td class="menu">
+      Total&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=browser">Browsers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=os">OS</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=request">Requests</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=refer">Referers</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=bot">Bots</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=ip">IPs</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=search">Search words</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=click">Clicks</a>&nbsp;&nbsp;&nbsp;
+      <a href="report.php?action=daily">Daily</a>&nbsp;&nbsp;&nbsp;
+      <a href="settings.php">Settings</a>&nbsp;&nbsp;&nbsp;
+      <a href="logout.php">Logout</a>
+    </td>
+  </tr>
+</table>
+<table width="100%">
+<tr>
+  <td class="caption"><h1><?=$content['date']['text']?></h1></td>  
+</tr>
+<tr>
+  <td valign="top" class="body">
+    <table class="info" width="50%">
+      <tr><td width="50%"></td><td width="50%"><b>#</b></td></tr>
+      <? if ($content['today']['unique'] != '0'): ?><tr><td align="right">Visitors</td><td><img src="images/row.gif" height="10px" width="<?=(100 * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['today']['unique']?></td></tr><? endif; ?>
+      <? if ($content['today']['audience'] != '0'): ?><tr><td align="right">Audience</td><td><img src="images/row.gif" height="10px" width="<?=($content['today_percent']['audience'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['today']['audience']?></td></tr><? endif; ?>
+      <? if ($content['today']['other'] != '0'): ?><tr><td align="right">Referers</td><td><img src="images/row.gif" height="10px" width="<?=($content['today_percent']['other'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['today']['other']?></td></tr><? endif; ?>
+      <? if ($content['today']['search'] != '0'): ?><tr><td align="right">Search</td><td><img src="images/row.gif" height="10px" width="<?=($content['today_percent']['search'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['today']['search']?></td></tr><? endif; ?>
+      <? if ($content['today']['robots'] != '0'): ?><tr><td align="right">Bots</td><td><img src="images/row.gif" height="10px" width="<?=($content['today_percent']['robots'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['today']['robots']?></td></tr><? endif; ?>
+    </table>
+    <p>&nbsp;<p>
+    <table class="info" width="50%">
+      <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>        
+      <? if ($content['today_percent']['audience'] != '0'): ?><tr><td align="right">Audience</td><td><img src="images/row.gif" height="10px" width="<?=($content['today_percent']['audience'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['today_percent']['audience']?></td></tr><? endif; ?>
+      <? if ($content['today_percent']['other'] != '0'): ?><tr><td align="right">Referers</td><td><img src="images/row.gif" height="10px" width="<?=($content['today_percent']['other'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['today_percent']['other']?></td></tr><? endif; ?>
+      <? if ($content['today_percent']['search'] != '0'): ?><tr><td align="right">Search</td><td><img src="images/row.gif" height="10px" width="<?=($content['today_percent']['search'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['today_percent']['search']?></td></tr><? endif; ?>
+      <? if ($content['today_percent']['robots'] != '0'): ?><tr><td align="right">Bots</td><td><img src="images/row.gif" height="10px" width="<?=($content['today_percent']['robots'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['today_percent']['robots']?></td></tr><? endif; ?>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td class="caption"><h1>Total for <?=$content['days']?> <?=st_noun_to_text($content['days'], array('day', 'days', 'days'))?></h1></td>
+</tr>
+<tr>
+  <td valign="top" class="body">      
+    <table class="info" width="50%">
+      <tr><td width="50%"></td><td width="50%"><b>#</b></td></tr>
+      <? if ($content['total']['unique'] != '0'): ?><tr><td align="right">Visitors</td><td><img src="images/row.gif" height="10px" width="<?=(100 * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['total']['unique']?></td></tr><? endif; ?>
+      <? if ($content['total']['audience'] != '0'): ?><tr><td align="right">Audience</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['audience'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['total']['audience']?></td></tr><? endif; ?>
+      <? if ($content['total']['other'] != '0'): ?><tr><td align="right">Referers</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['other'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['total']['other']?></td></tr><? endif; ?>
+      <? if ($content['total']['search'] != '0'): ?><tr><td align="right">Search</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['search'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['total']['search']?></td></tr><? endif; ?>
+      <? if ($content['total']['robots'] != '0'): ?><tr><td align="right">Bots</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['robots'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['total']['robots']?></td></tr><? endif; ?>
+    </table>
+    <p>&nbsp;<p>
+    <table class="info" width="50%">
+      <tr><td width="50%"></td><td width="50%"><b>%</b></td></tr>        
+      <? if ($content['percent']['audience'] != '0'): ?><tr><td align="right">Audience</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['audience'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['percent']['audience']?></td></tr><? endif; ?>
+      <? if ($content['percent']['other'] != '0'): ?><tr><td align="right">Referers</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['other'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['percent']['other']?></td></tr><? endif; ?>
+      <? if ($content['percent']['search'] != '0'): ?><tr><td align="right">Search</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['search'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['percent']['search']?></td></tr><? endif; ?>
+      <? if ($content['percent']['robots'] != '0'): ?><tr><td align="right">Bots</td><td><img src="images/row.gif" height="10px" width="<?=($content['percent']['robots'] * 2 + 1)?>px">&nbsp;&nbsp;<?=$content['percent']['robots']?></td></tr><? endif; ?>
+    </table>  
+  </td>
+</tr>
+</table>
+<table width="100%">
+  <tr><td class="footer"></td></tr>
+</table>
+</body>
+</html>
